@@ -1,3 +1,7 @@
+<!--
+* @author : U.K.Dulanjana Lakshan Kumarasingha
+* @since : 0.1.0
+-->
 <!doctype html>
 <html lang="en">
 <head>
@@ -195,11 +199,11 @@
                     <h1 class="h1 mb-3">Customer Manage</h1>
                     <div class="mb-3">
                         <label class="form-label" for="srcCusID">Search Customer</label>
-                        <input class="form-control" id="srcCusID" placeholder="Customer ID, NIC, Name" type="text">
+                        <input class="form-control" id="srcCusID" placeholder="Customer ID" type="text">
                     </div>
                     <button class="btn btn-primary" id="btnSearch">Search</button>
                     <button class="btn btn-danger">Delete</button>
-                    <button class="btn btn-success" id="btnSaveOrUpdate">Save or Update</button>
+                    <button class="btn btn-success" id="btnSaveAndUpdateCustomer">Save or Update</button>
                 </div>
             </div>
             <div class="col-12 col-md-5">
@@ -245,5 +249,7 @@
 <script src="assets/bootstarp/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/jquery-3.6.0.min.js"></script>
 <script src="assets/js/script.js"></script>
+<script src="db/DB.js"></script>
+<script src="assets/js/customerController.js"></script>
 </body>
 </html>
