@@ -22,6 +22,8 @@ function itemValidation() {
 
 }
 
+/*----------------- Save Delete --------------------------*/
+
 $("#btnSaveItem").click(function () {
     addItem();
     loadAllItem();
@@ -46,6 +48,8 @@ function loadAllItem() {
     }
 }
 
+/*----------------- Item Delete --------------------------*/
+
 function deleteItem() {
     let searchItem = $("#txtItemID").val();
     for (var i = 0; i < itemDB.length; i++) {
@@ -67,5 +71,30 @@ function clearDeleteItemFields() {
 
 $("#btnItemDelete").click(function () {
     deleteItem();
+    loadAllItem();
+})
+
+/*----------------- Update Delete --------------------------*/
+
+function updateItem() {
+    let itemCode = $("#txtItemID").val();
+    let itemName = $("#txtItemName").val();
+    let itemDescription = $("#txtItemDescription").val();
+    let itemQTY = $("#txtItemQTY").val();
+    let itemPrice = $("#txtItemPrice").val();
+
+    for (var i = 0; i < itemDB.length; i++) {
+        if (itemDB[i].getCode() == itemCode) {
+            itemDB[i].setCode(itemCode);
+            itemDB[i].setName(itemName);
+            itemDB[i].setDescription(itemDescription);
+            itemDB[i].setQTY(itemQTY);
+            itemDB[i].setPrice(itemPrice);
+        }
+    }
+}
+
+$("#btnUpdateItem").click(function () {
+    updateItem();
     loadAllItem();
 })
