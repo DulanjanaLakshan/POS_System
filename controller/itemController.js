@@ -76,25 +76,50 @@ $("#btnItemDelete").click(function () {
 
 /*----------------- Update Delete --------------------------*/
 
-function updateItem() {
-    let itemCode = $("#txtItemID").val();
-    let itemName = $("#txtItemName").val();
-    let itemDescription = $("#txtItemDescription").val();
-    let itemQTY = $("#txtItemQTY").val();
-    let itemPrice = $("#txtItemPrice").val();
+$("#btnUpdateItem").click(function () {
+    let res = confirm("Do you want to update this item?");
+    if (res) {
+        let id =$("#srcItemID").val();
+        updateItem(id);
+
+    }
+    loadAllItem();
+})
+
+function updateItem(id) {
+    let updateItemId = $("#txtItemID").val();
+    let updateItemName = $("#txtItemName").val();
+    let updateItemDescription = $("#txtItemDescription").val();
+    let updateItemQTY = $("#txtItemQTY").val();
+    let updateItemPrice = $("#txtItemPrice").val();
 
     for (var i = 0; i < itemDB.length; i++) {
-        if (itemDB[i].getCode() == itemCode) {
-            itemDB[i].setCode(itemCode);
-            itemDB[i].setName(itemName);
-            itemDB[i].setDescription(itemDescription);
-            itemDB[i].setQTY(itemQTY);
-            itemDB[i].setPrice(itemPrice);
+
+        if (itemDB[i].getCode() == id) {
+            itemDB[i].setCode(updateItemId);
+            itemDB[i].setName(updateItemName);
+            itemDB[i].setDescription(updateItemDescription);
+            itemDB[i].setQTY(updateItemQTY);
+            itemDB[i].setPrice(updateItemPrice);
+            loadAllItem();
         }
     }
 }
 
-$("#btnUpdateItem").click(function () {
-    updateItem();
-    loadAllItem();
+/*---------------------- Search Item ----------------------*/
+$("#btnSearch").click(function () {
+    let ItemId=$("#srcItemID").val();
+    searchItem(ItemId);
 })
+
+function searchItem(id) {
+    for (var i=0;i<itemDB.length;i++){
+        if (itemDB[i].getCode()==id){
+            $("#txtItemID").val( itemDB[i].getCode());
+            $("#txtItemName").val( itemDB[i].getName());
+            $("#txtItemDescription").val( itemDB[i].getDescription());
+            $("#txtItemQTY").val( itemDB[i].getCode());
+            $("#txtItemPrice").val( itemDB[i].getCode());
+        }
+    }
+}

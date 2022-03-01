@@ -24,19 +24,19 @@ function ItemDTO(code, name, description, qty, price) {
     this.getPrice = function () {
         return I_price;
     }
-    this.setCode = function () {
+    this.setCode = function (code) {
         I_code = code;
     }
-    this.setName = function () {
+    this.setName = function (name) {
         I_name = name;
     }
-    this.setDescription = function () {
+    this.setDescription = function (description) {
         I_description = description;
     }
-    this.setQTY = function () {
+    this.setQTY = function (qty) {
         I_qty = qty;
     }
-    this.setPrice = function () {
+    this.setPrice = function (price) {
         I_price = price;
     }
 }
