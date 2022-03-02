@@ -29,37 +29,3 @@ $("#PlaceOrder_a").click(function () {
     $("#Item_Section").css("display", "none");
     $("#Home").css("display", "none");
 })
-
-/*-----------------Item Manage Sections------------------------------*/
-$("#btnItemSaveOrUpdate").click(function () {
-    let ItemID = $("#txtItemID").val();
-    let ItemName = $("#txtItemName").val();
-    let ItemDescription = $("#txtItemDescription").val();
-    let ItemQTY = $("#txtItemQTY").val();
-    let ItemPrice = $("#txtItemPrice").val();
-})
-
-/*--------------------customer reguler expressions--------------------*/
-const CIdReg =  /^(C00-)[0-9]{1,3}$/;
-const CNameReg = /^[A-z]{5,20}$/;
-const CAddressReg = /^[0-9/A-z. ,]{7,}$/
-const CNumberReg = /^(070,071,072,073,074,075,076,077,078,079)[-]?[0-9]{7}$/;
-
-$("#txtCusID,#txtCusName,#txtCusAddress,#txtCusTP").on('keydown', function (eventOb) {
-    if (eventOb.key == "Tab") {
-        eventOb.preventDefault(); // stop execution of the button
-    }
-});
-$('#txtCusID,#txtCusName,#txtCusAddress,#txtCusSalary').on('blur', function () {
-    formValid();
-});
-
-function formValid() {
-    var cusId = $("#txtCusID").val();
-    $("#txtCusID").css('border', '2px solid green');
-    if (CIdReg.test(cusId)) {
-        $("#txtCusID").css('border', '2px solid green');
-    } else {
-        $("#txtCusID").css('border', '2px solid red');
-    }
-}
