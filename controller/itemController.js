@@ -2,7 +2,7 @@
 * @author : U.K.Dulanjana Lakshan Kumarasingha
 * @since : 0.1.0
 */
-/*----------------- Save Delete --------------------------*/
+/*----------------- Save Item --------------------------*/
 $("#btnSaveItem").click(function () {
     let res = confirm("Do you want to save this item?");
     if (res) {
@@ -169,7 +169,7 @@ function itemValidation() {
                         $("#txtItemPrice").css('border', '2px solid green');
                         return true;
                     }else{
-                        $("#txtItemQTY").css('border', '2px solid red');
+                        $("#txtItemPrice").css('border', '2px solid red');
                         return false;
                     }
                 }else{

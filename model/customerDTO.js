@@ -4,35 +4,29 @@ function customerDTO(Id, Name, Address, Tp) {
     var customerAddress = Address;
     var customerTP = Tp;
 
-    function getId() {
+    this.getId = function () {
         return customerId;
     }
-
-    function setId(id) {
+    this.setId = function (id) {
         customerId = id;
     }
-
-    function getName() {
+    this.getCustomerName = function () {
         return customerName;
     }
-
-    function setName(name) {
+    this.setCustomerName = function (name) {
         customerName = name;
     }
-
-    function getAddress() {
+    this.getCustomerAddress=function () {
         return customerAddress;
     }
-
-    function setAddress(address) {
+    this.setCustomerAddress = function (address) {
         customerAddress = address;
     }
-
-    function getTp() {
+    this.getCustomerTP = function () {
         return customerTP;
     }
-
-    function setTp(Tp) {
-        customerTP = Tp;
+    this.setCustomerTP = function (tp) {
+        customerTP = tp;
     }
+
 }
