@@ -55,15 +55,39 @@ function updateCustomer(id) {
     }
 }
 
+/*---------------------- Delete Customer ----------------------*/
+$("#btnDeleteCustomer").click(function () {
+    let res = confirm("Do you want to delete this customer?");
+    if (res) {
+        deleteCustomer();
+    }
+})
+
+function deleteCustomer() {
+    let searchCustomer = $("#txtCusID").val();
+    for (var i=0;i<customerDB.length;i++){
+        if (customerDB[i].getId()==searchCustomer){
+            customerDB.splice(i,1);
+            clearAllCustomer();
+            loadAllCustomer();
+            genCusId();
+        }
+    }
+}
+
 /*---------------------- Search Customer ----------------------*/
 $("#btnCustomerSearch").click(function () {
     var customerID = $("#txtCusID").val();
     searchCustomer(customerID);
 })
+$("#srcCusID").on('keydown',function () {
+    var customerID = $("#txtCusID").val();
+    searchCustomer(customerID);
+})
 
-function searchCustomer(id) {
+function searchCustomer(customerID) {
     for (var i = 0; i < customerDB.length; i++) {
-        if (customerDB[i].getId() == id) {
+        if (customerDB[i].getId() == customerID) {
             $("#txtCusID").val(customerDB[i].getId());
             $("#txtCusName").val(customerDB[i].getCustomerName());
             $("#txtCusAddress").val(customerDB[i].getCustomerAddress());
