@@ -26,31 +26,51 @@ function addCustomer() {
     customerDB.push(customer);
 }
 
+/*----------------- Update Customer --------------------------*/
+$("#btnUpdateCustomer").click(function () {
+    let res = confirm("Do you want to update this Customer?");
+    if (res) {
+        let id = $("#txtCusID").val();
+        updateCustomer(id);
+    }
+    loadAllCustomer();
+    clearAllCustomer();
+    genCusId();
+})
 
+function updateCustomer(id) {
+    let updateCustomerId = $("#txtCusID").val();
+    let updateCustomerName = $("#txtCusName").val();
+    let updateCustomerAddress = $("#txtCusAddress").val();
+    let updateCustomerNO = $("#txtCusTP").val();
 
-
-function loadAllCustomer() {
-    $("#customerTable").empty();
-    for (var i=0; i<customerDB.length; i++){
-        let row = `<tr><td>${customerDB[i].getId()}</td><td>${customerDB[i].getCustomerName()}</td><td>${customerDB[i].getCustomerAddress()}</td><td>${customerDB[i].getCustomerTP()}</td></tr>`;
-        $("#customerTable").append(row);
+    for (var i = 0; i < customerDB.length; i++) {
+        if (customerDB[i].getId() == id) {
+            customerDB[i].setId(updateCustomerId);
+            customerDB[i].setCustomerName(updateCustomerName);
+            customerDB[i].setCustomerAddress(updateCustomerAddress);
+            customerDB[i].setCustomerTP(updateCustomerNO);
+            loadAllCustomer();
+        }
     }
 }
 
+/*---------------------- Search Customer ----------------------*/
+$("#btnCustomerSearch").click(function () {
+    var customerID = $("#txtCusID").val();
+    searchCustomer(customerID);
+})
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+function searchCustomer(id) {
+    for (var i = 0; i < customerDB.length; i++) {
+        if (customerDB[i].getId() == id) {
+            $("#txtCusID").val(customerDB[i].getId());
+            $("#txtCusName").val(customerDB[i].getCustomerName());
+            $("#txtCusAddress").val(customerDB[i].getCustomerAddress());
+            $("#txtCusTP").val(customerDB[i].getCustomerTP);
+        }
+    }
+}
 
 
 /*----------------- Other Method --------------------------*/
@@ -75,5 +95,13 @@ function genCusId() {
         } else if (tempCode <= 9999) {
             $("#txtCusID").val("C00-" + tempCode);
         }
+    }
+}
+
+function loadAllCustomer() {
+    $("#customerTable").empty();
+    for (var i = 0; i < customerDB.length; i++) {
+        let row = `<tr><td>${customerDB[i].getId()}</td><td>${customerDB[i].getCustomerName()}</td><td>${customerDB[i].getCustomerAddress()}</td><td>${customerDB[i].getCustomerTP()}</td></tr>`;
+        $("#customerTable").append(row);
     }
 }

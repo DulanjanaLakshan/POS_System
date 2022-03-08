@@ -44,7 +44,7 @@ function deleteItem() {
     }
 }
 
-/*----------------- Update Delete --------------------------*/
+/*----------------- Update Item --------------------------*/
 $("#btnUpdateItem").click(function () {
     let res = confirm("Do you want to update this item?");
     if (res) {
